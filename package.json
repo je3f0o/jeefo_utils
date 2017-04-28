@@ -1,0 +1,37 @@
+{
+  "name": "jeefo_core",
+  "version": "0.0.1",
+  "homepage" : "https://github.com/je3f0o/jeefo_core",
+  "description": "jeefo core",
+  "author": "je3f0o <je3f0o@gmail.com>",
+  "license": "MIT",
+  "main": "index.js",
+  "scripts": {
+    "build": "node build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/je3f0o/jeefo_core.git"
+  },
+  "keywords": [
+    "jeefo",
+    "token",
+    "tokenizer"
+  ],
+  "devDependencies": {
+    "expect": "^1.20.2",
+    "fs-extra": "^0.30.0",
+    "mocha": "^3.0.2"
+  },
+  "dependencies": {
+    "jeefo": "0.0.8",
+    "uglify-js": "^2.8.22"
+  },
+  "uglify_config": {
+    "mangle": { "toplevel" : true },
+    "compress" : {
+      "comparisons" : false
+    },
+    "fromString" : true
+  }
+}
