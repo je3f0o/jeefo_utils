@@ -11,7 +11,6 @@ _._._._._._._._._._._._._._._._._._._._._.*/
 
 var fse      = require("fs-extra"),
 	path     = require("path"),
-	config   = require("./uglify_config.json"),
 	uglify   = require("uglify-js"),
 	_package = require("../package");
 
@@ -42,9 +41,9 @@ var browser_source = `(function (jeefo, $window, $document) { "use strict";\n\n$
 var build_source   = `function fn (jeefo) {${ source }}`;
 var node_source    = `"use strict";module.exports=function (jeefo) {${ source }};`;
 
-browser_source = uglify.minify(browser_source, config).code;
-build_source   = uglify.minify(build_source, config).code;
-node_source    = uglify.minify(node_source, config).code;
+browser_source = uglify.minify(browser_source, _package.uglify_config).code;
+build_source   = uglify.minify(build_source, _package.uglify_config).code;
+node_source    = uglify.minify(node_source, _package.uglify_config).code;
 
 // Final step
 var output_filename  = path.resolve(__dirname, `../dist/${ _package.name }.js`);
