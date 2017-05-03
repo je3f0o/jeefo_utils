@@ -1,9 +1,12 @@
 {
   "name": "jeefo_core",
-  "version": "0.0.3",
+  "version": "0.0.6",
   "homepage": "https://github.com/je3f0o/jeefo_core",
   "description": "jeefo core",
-  "author": "je3f0o <je3f0o@gmail.com>",
+  "author": {
+    "name": "je3f0o",
+    "email": "je3f0o@gmail.com"
+  },
   "license": "MIT",
   "main": "index.js",
   "scripts": {
@@ -15,8 +18,7 @@
   },
   "keywords": [
     "jeefo",
-    "token",
-    "tokenizer"
+    "core"
   ],
   "devDependencies": {
     "expect": "^1.20.2",
