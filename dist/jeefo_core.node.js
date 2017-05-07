@@ -1,14 +1,16 @@
-/**
- * jeefo_core : v0.0.7
- * Author     : je3f0o, <je3f0o@gmail.com>
- * Homepage   : https://github.com/je3f0o/jeefo_core
- * License    : The MIT license
- * Copyright  : undefined
- **/
 
 "use strict";
 
 module.exports = function (jeefo) {
+
+/**
+ * jeefo_core : v0.0.8
+ * Author     : je3f0o, <je3f0o@gmail.com>
+ * Homepage   : https://github.com/je3f0o/jeefo_core
+ * License    : The MIT License
+ * Copyright  : 2017
+ **/
+jeefo.use(function () {
 
 /* -.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.
 * File Name   : core.js
@@ -221,6 +223,8 @@ run("$injector", function ($injector) {
 	register("json_parse", {
 		fn : function () { return json_parse; }
 	});
+
+});
 
 });
 

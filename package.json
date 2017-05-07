@@ -1,7 +1,8 @@
 {
   "name": "jeefo_core",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "homepage": "https://github.com/je3f0o/jeefo_core",
+  "copyright": "2017",
   "description": "jeefo core",
   "author": {
     "name": "je3f0o",

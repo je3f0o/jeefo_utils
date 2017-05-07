@@ -1,11 +1,11 @@
 /**
- * jeefo_core : v0.0.7
+ * jeefo_core : v0.0.8
  * Author     : je3f0o, <je3f0o@gmail.com>
  * Homepage   : https://github.com/je3f0o/jeefo_core
- * License    : The MIT license
- * Copyright  : undefined
+ * License    : The MIT License
+ * Copyright  : 2017
  **/
-(function (jeefo) {
+jeefo.use(function () {
 
 /* -.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.
 * File Name   : core.js
@@ -221,4 +221,4 @@ run("$injector", function ($injector) {
 
 });
 
-}(jeefo));
+});
