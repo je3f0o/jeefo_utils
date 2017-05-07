@@ -1,6 +1,6 @@
 {
   "name": "jeefo_core",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "homepage": "https://github.com/je3f0o/jeefo_core",
   "description": "jeefo core",
   "author": {
@@ -27,7 +27,7 @@
     "uglify-js": "^2.8.22"
   },
   "dependencies": {
-    "jeefo": "0.0.8"
+    "jeefo": "^0.0.9"
   },
   "uglify_config": {
     "mangle": {

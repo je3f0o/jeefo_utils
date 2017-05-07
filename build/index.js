@@ -1,7 +1,7 @@
 /* -.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.
 * File Name   : index.js
 * Created at  : 2017-04-29
-* Updated at  : 2017-05-03
+* Updated at  : 2017-05-07
 * Author      : jeefo
 * Purpose     :
 * Description :
@@ -50,7 +50,7 @@ var header = header_compiler({
 });
 
 var browser_source = `(function (jeefo, $window, $document) { "use strict";\n\n${ source }\n\n}(window.jeefo, window, document));`;
-var node_source    = `${ header }\n"use strict";\n\nmodule.exports = function (jeefo) {\n\n${ source }\n\nreturn jeefo;\n\n};`;
+var node_source    = `${ header }\n"use strict";\n\nmodule.exports = function (jeefo) {\n\n${ source }\n\nreturn jeefo\n\n};`;
 var output_source  = `${ header }(function (jeefo) {\n\n${ source }\n\n}(jeefo));`;
 var node_min_source;
 
