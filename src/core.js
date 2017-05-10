@@ -1,7 +1,7 @@
 /* -.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.
 * File Name   : core.js
 * Created at  : 2017-04-08
-* Updated at  : 2017-05-07
+* Updated at  : 2017-05-10
 * Author      : jeefo
 * Purpose     :
 * Description :
@@ -95,6 +95,19 @@ json_parse = function (value) {
 	try {
 		return JSON.parse(value);
 	} catch (e) {}
+},
+
+JeefoObject = function () {};
+
+JeefoObject.prototype = {
+	Array       : Array,
+	JeefoObject : JeefoObject,
+	$new : function () {
+		return new this.JeefoObject();
+	},
+	$copy : function () {
+		return this.assign(new this.JeefoObject(), this);
+	},
 };
 
 core_module.extend("namespace", ["$injector", "make_injectable"], function (injector, make_injectable) {
@@ -132,6 +145,20 @@ core_module.extend("namespace", ["$injector", "make_injectable"], function (inje
 
 		return this;
 	};
+}).
+
+namespace("JeefoObject", ["object.assign"], function (assign) {
+	if (JeefoObject.create) {
+		JeefoObject.create = function (object) {
+			return assign(new JeefoObject(), object);
+		};
+	}
+
+	if (! JeefoObject.prototype.assign) {
+		JeefoObject.prototype.assign = assign;
+	}
+
+	return JeefoObject;
 }).
 
 namespace("transform.dash_case", function () {
