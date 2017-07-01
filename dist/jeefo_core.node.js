@@ -4,7 +4,7 @@
 module.exports = function (jeefo) {
 
 /**
- * jeefo_core : v0.0.12
+ * jeefo_core : v0.0.13
  * Author     : je3f0o, <je3f0o@gmail.com>
  * Homepage   : https://github.com/je3f0o/jeefo_core
  * License    : The MIT License
@@ -15,7 +15,7 @@ jeefo.use(function (jeefo) {
 /* -.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.
 * File Name   : core.js
 * Created at  : 2017-04-08
-* Updated at  : 2017-05-10
+* Updated at  : 2017-07-01
 * Author      : jeefo
 * Purpose     :
 * Description :
@@ -258,13 +258,12 @@ extend("factory", [
 extend("service", [
 	"$injector",
 	"make_injectable",
-	"transform.snake_case",
-], function ($injector, make_injectable, snake_case) {
+], function ($injector, make_injectable) {
 	return function (name) {
 		var injectable = make_injectable.apply(null, arguments);
 		injectable.is_constructor = true;
 
-		$injector.register(snake_case(name + "Service"), injectable);
+		$injector.register(name + "_service", injectable);
 		return this;
 	};
 }).
