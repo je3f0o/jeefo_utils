@@ -4,7 +4,7 @@
 module.exports = function (jeefo) {
 
 /**
- * jeefo_core : v0.0.14
+ * jeefo_core : v0.0.15
  * Author     : je3f0o, <je3f0o@gmail.com>
  * Homepage   : https://github.com/je3f0o/jeefo_core
  * License    : The MIT License
