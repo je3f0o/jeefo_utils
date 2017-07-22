@@ -1,5 +1,5 @@
 /**
- * jeefo_core : v0.0.15
+ * jeefo_core : v0.0.16
  * Author     : je3f0o, <je3f0o@gmail.com>
  * Homepage   : https://github.com/je3f0o/jeefo_core
  * License    : The MIT License
