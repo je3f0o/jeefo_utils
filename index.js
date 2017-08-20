@@ -1,20 +1,20 @@
 /* -.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.
 * File Name   : index.js
-* Created at  : 2017-04-27
-* Updated at  : 2017-05-03
+* Created at  : 2017-08-20
+* Updated at  : 2017-08-20
 * Author      : jeefo
 * Purpose     :
 * Description :
 _._._._._._._._._._._._._._._._._._._._._.*/
-//ignore:start
-"use strict";
+// ignore:start
 
-/* global */
-/* exported */
+/* globals */
 /* exported */
 
-//ignore:end
+// ignore:end
 
-var _package = require("./package");
-
-module.exports = require(`./dist/${ _package.name }.node.min`);
+module.exports = {
+	dash_case     : require("./string/dash_case"),
+	array_remove  : require("./array/remove"),
+	object_assign : require("./object/assign"),
+};
