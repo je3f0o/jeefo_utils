@@ -1,5 +1,5 @@
 /* -.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.
-* File Name   : snake_case.js
+* File Name   : capitalize.js
 * Created at  : 2017-09-01
 * Updated at  : 2017-09-01
 * Author      : jeefo
@@ -13,10 +13,6 @@ _._._._._._._._._._._._._._._._._._._._._.*/
 
 // ignore:end
 
-var CAMEL_CASE_REGEXP = /[A-Z]/g;
-
-module.exports = function snake_case (str) {
-	return str.replace(CAMEL_CASE_REGEXP, function (letter, pos) {
-		return (pos ? '_' : '') + letter.toLowerCase();
-	});
+module.exports = function capitalize (str) {
+    return str.charAt(0).toUpperCase() + str.slice(1);
 };
