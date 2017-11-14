@@ -1,1 +1,2 @@
-# jeefo_core
+# jeefo_utils
+Part of jeefo framework
