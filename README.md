@@ -1,2 +1,2 @@
-# jeefo_utils
+# @jeefo/utils
 Part of jeefo framework
