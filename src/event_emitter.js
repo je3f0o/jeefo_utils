@@ -1,7 +1,7 @@
 /* -.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.
 * File Name   : event_emitter.js
 * Created at  : 2019-09-17
-* Updated at  : 2019-10-17
+* Updated at  : 2019-11-09
 * Author      : jeefo
 * Purpose     :
 * Description :
@@ -32,6 +32,7 @@ class EventEmitter {
                 events[event_name] = [];
             }
             events[event_name].push(listener);
+            return listener;
         }, false);
 
         const off_handler = (event_name, listener) => {
