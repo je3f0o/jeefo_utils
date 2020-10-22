@@ -1,7 +1,7 @@
 /* -.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.
 * File Name   : remove.js
 * Created at  : 2017-08-09
-* Updated at  : 2019-09-05
+* Updated at  : 2020-10-22
 * Author      : jeefo
 * Purpose     :
 * Description :
@@ -14,18 +14,16 @@
 
 // ignore:end
 
-const is_array = Array.isArray;
+const {isArray} = Array;
 
 const remove_element = (array, element, remove_all_instances) => {
-	let index = array.indexOf(element);
-	while (index !== -1) {
-		array.splice(index, 1);
-        if (remove_all_instances) {
+    let index = array.indexOf(element);
+    if (remove_all_instances) {
+        while (index !== -1) {
+            array.splice(index, 1);
             index = array.indexOf(element);
-        } else {
-            return;
         }
-	}
+    } else array.splice(index, 1);
 };
 
 /**
@@ -35,7 +33,7 @@ const remove_element = (array, element, remove_all_instances) => {
  * @param element {any} - Removing element looking for
  */
 module.exports = (array, elements, remove_all_instances = true) => {
-    if (is_array(elements)) {
+    if (isArray(elements)) {
         elements.forEach(element => {
             remove_element(array, element, remove_all_instances);
         });

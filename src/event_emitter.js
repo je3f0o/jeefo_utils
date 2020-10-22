@@ -1,7 +1,7 @@
 /* -.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.
 * File Name   : event_emitter.js
 * Created at  : 2019-09-17
-* Updated at  : 2019-11-09
+* Updated at  : 2020-10-22
 * Author      : jeefo
 * Purpose     :
 * Description :
@@ -15,8 +15,9 @@
 
 // ignore:end
 
-const Readonly     = require("./object/readonly");
-const array_remove = require("./array/remove");
+const Readonly      = require("./object/readonly");
+const array_remove  = require("./array/remove");
+const extend_member = require("./class/extend_member");
 
 class EventEmitter {
     constructor (is_private = false) {
@@ -87,6 +88,6 @@ class EventEmitter {
         return listener;
     }
 }
-EventEmitter.prototype.off = EventEmitter.prototype.removeListener;
+extend_member(EventEmitter, "off", EventEmitter.prototype.removeListener);
 
 module.exports = EventEmitter;
