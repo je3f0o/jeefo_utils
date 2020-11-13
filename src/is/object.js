@@ -1,7 +1,7 @@
 /* -.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.
 * File Name   : object.js
 * Created at  : 2017-10-12
-* Updated at  : 2020-06-01
+* Updated at  : 2020-11-10
 * Author      : jeefo
 * Purpose     :
 * Description :
@@ -14,4 +14,4 @@ _._._._._._._._._._._._._._._._._._._._._.*/
 
 // ignore:end
 
-module.exports = value => typeof value === "object" && value !== null;
+module.exports = value => value !== null && typeof value === "object";
