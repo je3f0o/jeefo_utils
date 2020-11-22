@@ -25,6 +25,7 @@
         "utils"
     ],
     "devDependencies": {
+        "@jeefo/fs": "0.0.9",
         "@jeefo/publish": "0.0.31"
     },
     "dependencies": {}

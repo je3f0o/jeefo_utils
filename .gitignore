@@ -1,5 +1,8 @@
 # Node Modules
 node_modules
 
+# dev
+dev
+
 # Temporary dir created while `npm run jeefo_publish`
 .temp_publish_dir
