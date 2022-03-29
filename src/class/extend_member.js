@@ -1,7 +1,7 @@
 /* -.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.
 * File Name   : extend_member.js
 * Created at  : 2019-08-04
-* Updated at  : 2019-08-05
+* Updated at  : 2021-11-10
 * Author      : jeefo
 * Purpose     :
 * Description :
@@ -15,14 +15,17 @@
 
 // ignore:end
 
-class Abc { static static_method () {} }
+class Abc {
+    static static_method() {}
+}
+
 const member_property_descriptor = Object.getOwnPropertyDescriptor(
     Abc.prototype, "constructor"
 );
 const static_property_descriptor = Object.getOwnPropertyDescriptor(
     Abc, "static_method"
 );
-const object_define_property = Object.defineProperty;
+const {defineProperty} = Object;
 
 /**
  * Extend Class methods or properties. Which is using exact same property
@@ -34,7 +37,7 @@ const object_define_property = Object.defineProperty;
  * @param is_static {Boolean} - If it's true which means assign directly into Class
  * itself. If it's false which means assigning to prototype of the Class object.
  */
-function extend_member (Class, member, value, is_static = false) {
+function extend_member(Class, member, value, is_static = false) {
     let object, property_descriptor;
 
     if (is_static) {
@@ -46,7 +49,7 @@ function extend_member (Class, member, value, is_static = false) {
     }
 
     property_descriptor.value = value;
-    object_define_property(object, member, property_descriptor);
+    defineProperty(object, member, property_descriptor);
 }
 
 module.exports = extend_member;
