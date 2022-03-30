@@ -1,7 +1,7 @@
 /* -.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.
 * File Name   : request.js
 * Created at  : 2022-03-15
-* Updated at  : 2022-03-29
+* Updated at  : 2022-03-30
 * Author      : jeefo
 * Purpose     :
 * Description :
@@ -15,8 +15,9 @@
 
 // ignore:end
 
-const is   = require("@jeefo/utils/is");
-const http = require("http");
+const is    = require("@jeefo/utils/is");
+const http  = require("http");
+const https = require("https");
 
 module.exports = (url, options = {}) => {
   return new Promise((resolve, reject) => {
@@ -29,7 +30,8 @@ module.exports = (url, options = {}) => {
       };
     }
 
-    const req = http.request(url, options, res => {
+    const protocol = url.startsWith("https:") ? https : http;
+    const req = protocol.request(url, options, res => {
       let data = '';
       res.setEncoding("utf8");
       res.on("data", chunk => data += chunk);
