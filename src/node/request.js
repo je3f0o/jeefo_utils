@@ -1,7 +1,7 @@
 /* -.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.
 * File Name   : request.js
 * Created at  : 2022-03-15
-* Updated at  : 2022-03-30
+* Updated at  : 2022-03-31
 * Author      : jeefo
 * Purpose     :
 * Description :
@@ -35,7 +35,11 @@ module.exports = (url, options = {}) => {
       let data = '';
       res.setEncoding("utf8");
       res.on("data", chunk => data += chunk);
-      res.on("end", () => resolve(data || null));
+      res.on("end", () => resolve({
+        status  : res.statusCode,
+        headers : res.headers,
+        body    : data || null,
+      }));
     });
 
     req.on("error", reject);
