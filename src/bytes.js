@@ -1,7 +1,7 @@
 /* -.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.
 * File Name   : bytes.js
 * Created at  : 2022-03-06
-* Updated at  : 2022-03-29
+* Updated at  : 2022-03-31
 * Author      : jeefo
 * Purpose     :
 * Description :
@@ -22,6 +22,7 @@ const BYTES_PER_KILOBYTE = 1024;
 const BYTES_PER_MEGABYTE = Math.pow(BYTES_PER_KILOBYTE, 2);
 const BYTES_PER_GIGABYTE = Math.pow(BYTES_PER_KILOBYTE, 3);
 const BYTES_PER_TERABYTE = Math.pow(BYTES_PER_KILOBYTE, 4);
+const BYTES_PER_PETABYTE = Math.pow(BYTES_PER_KILOBYTE, 5);
 
 module.exports = input => {
   if (typeof input === "string") {
@@ -29,32 +30,27 @@ module.exports = input => {
     if (!matches) throw new Error("Invalid input");
 
     let [, num, unit] = matches;
-    num = +num;
-    switch (unit.toLowerCase()) {
-      case "kb" : return num * BYTES_PER_KILOBYTE;
-      case "mb" : return num * BYTES_PER_MEGABYTE;
-      case "gb" : return num * BYTES_PER_GIGABYTE;
-      case "tb" : return num * BYTES_PER_TERABYTE;
+    num  = +num;
+    unit = unit.toUpperCase();
+    switch (unit) {
+      case "KB" : return num * BYTES_PER_KILOBYTE;
+      case "MB" : return num * BYTES_PER_MEGABYTE;
+      case "GB" : return num * BYTES_PER_GIGABYTE;
+      case "TB" : return num * BYTES_PER_TERABYTE;
+      case "PB" : return num * BYTES_PER_PETABYTE;
     }
   } else if (is_number(input)) {
-    let unit = "bytes";
+    let unit = 'B';
 
     LOOP:
     while (input >= BYTES_PER_KILOBYTE) {
       input /= BYTES_PER_KILOBYTE;
       switch (unit) {
-        case "bytes":
-          unit = "kb";
-          break;
-        case "kb":
-          unit = "mb";
-          break;
-        case "mb":
-          unit = "gb";
-          break;
-        case "gb":
-          unit = "tb";
-          break LOOP;
+        case 'B' : unit = "KB"; break;
+        case "KB": unit = "MB"; break;
+        case "MB": unit = "GB"; break;
+        case "GB": unit = "TB"; break;
+        case "TB": unit = "PB"; break LOOP;
       }
     }
 
