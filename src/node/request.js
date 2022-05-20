@@ -1,7 +1,7 @@
 /* -.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.
 * File Name   : request.js
 * Created at  : 2022-03-15
-* Updated at  : 2022-03-31
+* Updated at  : 2022-05-20
 * Author      : jeefo
 * Purpose     :
 * Description :
@@ -53,15 +53,6 @@ const parse_json = ({buffer, charset, status, headers, resolve, reject}) => {
 
 module.exports = (url, options = {}) => {
   return new Promise((resolve, reject) => {
-    if (is.object(options.body)) {
-      options.body = JSON.stringify(options.body);
-
-      options.headers = {...options.headers,
-        "Content-Type"   : "application/json",
-        "Content-Length" : Buffer.byteLength(options.body),
-      };
-    }
-
     const protocol = url.startsWith("https:") ? https : http;
     const req = protocol.request(url, options, res => {
       const {statusCode: status, headers} = res;
@@ -107,7 +98,21 @@ module.exports = (url, options = {}) => {
     });
 
     req.on("error", reject);
-    if (options.body) req.write(options.body);
+
+    if (options.body) {
+      if (!req.hasHeader("content-type")) {
+        if (options.body instanceof Buffer) {
+          req.setHeader("Content-Type", "application/octet-stream");
+        } else if (is.string(options.body)) {
+          req.setHeader("Content-Type", "text/plain");
+        } else if (options.body) {
+          options.body = JSON.stringify(options.body);
+          req.setHeader("Content-Type", "application/json");
+        }
+      }
+      req.setHeader("Content-Length", Buffer.byteLength(options.body));
+      req.write(options.body);
+    }
 
     req.end();
   });

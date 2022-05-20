@@ -1,6 +1,6 @@
 {
     "name": "@jeefo/utils",
-    "version": "0.0.16",
+    "version": "0.0.18",
     "homepage": "https://github.com/je3f0o/jeefo_utils",
     "copyright": "2017",
     "description": "Basic javascript utility helpers for jeefo framework and nodejs.",
