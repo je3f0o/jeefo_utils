@@ -1,7 +1,7 @@
 /* -.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.
-* File Name   : bytes.js
+ * File Name   : bytes.js
 * Created at  : 2022-03-06
-* Updated at  : 2022-03-31
+ * Updated at  : 2024-01-16
 * Author      : jeefo
 * Purpose     :
 * Description :
@@ -24,7 +24,7 @@ const BYTES_PER_GIGABYTE = Math.pow(BYTES_PER_KILOBYTE, 3);
 const BYTES_PER_TERABYTE = Math.pow(BYTES_PER_KILOBYTE, 4);
 const BYTES_PER_PETABYTE = Math.pow(BYTES_PER_KILOBYTE, 5);
 
-module.exports = input => {
+module.exports = (input, {fixed = 1, trim_zeros = true} = {}) => {
   if (typeof input === "string") {
     const matches = input.match(CAPTURE);
     if (!matches) throw new Error("Invalid input");
@@ -53,8 +53,9 @@ module.exports = input => {
         case "TB": unit = "PB"; break LOOP;
       }
     }
-
-    return `${input}${unit}`;
+    let result = input.toFixed(fixed);
+    if (trim_zeros) result = result.replace(/\.0*$/, '');
+    return `${result}${unit}`;
   }
   throw new Error("Invalid input");
 };
